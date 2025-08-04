@@ -1,0 +1,3 @@
+Method : POST | EndPoint : /add-course 
+Method : POST | EndPoint : /add-course 
+Method : GET | EndPoint : /all-courses 

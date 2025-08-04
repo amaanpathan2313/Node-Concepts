@@ -1,0 +1,24 @@
+{
+  "name": "node-concepts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaanpathan2313/Node-Concepts-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaanpathan2313/Node-Concepts-/issues"
+  },
+  "homepage": "https://github.com/amaanpathan2313/Node-Concepts-#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "is-odd": "^3.0.1"
+  }
+}
