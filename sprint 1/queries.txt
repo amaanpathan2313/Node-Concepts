@@ -1,0 +1,109 @@
+
+                                                                         # Mongo DB Queries #
+
+1. mongosh : to start mongoShell
+
+cls : to clear
+
+2. show dbs : Ti show all the available dataBase
+
+3. use Ecommers : If Ecommers database are available then use it otherwise create it and use It.
+
+4 db.createCollection("orders") : This command crete order collection inside Ecommers Database.
+
+5. show collections :  This command show all collection inside the database.
+
+6. db.orders.find() : Get all the document from orders collection
+
+7. db.orders.insertMany([{},{},...]) : Add new document in order collection
+
+                                                       #   Queries to Perform   #
+
+8. Retrieve all orders with the order_status "shipped" ===>  db.orders.find({ order_status: "shipped" })
+
+9. Update the total_amount of the order with order_id: 1 to 70000 ===>   Ecommers> db.orders.updateOne({order_id : 1}, {$set:{total_amount: 70000}})
+
+10. Delete the order with order_id: 4 ===>  Ecommers> db.orders.deleteOne({order_id : 4})
+
+11. Retrieve the order with the customer_name: "Alice Johnson" ===> Ecommers> db.orders.find({customer_name: "Alice Johnson"})
+
+12. Update the order_status of the order with order_id: 2 to "delivered" ===>  Ecommers> db.orders.updateOne({order_id: 2}, {$set:{"order_status": "delivered"}})
+
+13. Retrieve all orders with a total_amount greater than or equal to 15000 ===>  Ecommers> db.orders.find({"total_amount": {$gte : 15000}})
+
+//  forLessthenEqualto ==>  { $lt: 15000 }
+
+
+                                                              ##  Part - 2 ##
+
+
+1. Retrieve all recipes with cuisine "Italian" ==> Hotel> db.recipes.find({cuisine:"Italian"})
+
+2. Retrieve all recipes with a prep_time less than 30 minutes ==>  Hotel> db.recipes.find({"prep_time": {$lt : 30}})
+
+3. Retrieve all recipes where the price is greater than 500 ==>  Hotel> db.recipes.find({ "price": {$gte : 500}})
+
+4. Retrieve all recipes sorted by price in ascending order ==> Hotel> db.recipes.find().sort({price : 1})
+
+5. Update the price of the recipe with recipe_id: 2 (Chicken Biryani) to 900 ==>  Hotel> db.recipes.updateOne({ "recipe_id": 2, "name": "Chicken Biryani"}, {$set:{"price": 900}})
+
+6. Retrieve only the name and price fields for all recipes ==>  Hotel> db.recipes.find({}, { "name": 1, "price": 1})
+
+7. Retrieve all recipes where the difficulty is "medium" and the price is less than 600 ==> Hotel> db.recipes.find({ "difficulty" : "medium", "price" : {$lt : 600}},{"difficulty" : 1, "price" : 1})
+                                                                                                                                                                               ||
+                                                                                                                                              //  to travel all array element  == Return all documents 
+
+8. Retrieve all recipes sorted by prep_time in descending order ==>   Hotel> db.recipes.find().sort({"prep_time" : -1})
+
+9. Insert a new recipe ===>     Hotel> db.recipes.insertOne({ "recipe_id": 11, 
+                                 "name": "Chocolate Cake", 
+                                 "ingredients": ["Flour", "Sugar", "Cocoa Powder", "Eggs", "Butter"],
+                                 "cuisine": "American",
+                                 "prep_time": 50,
+                                 "difficulty": "medium",
+                                 "price": 750 
+                               })
+
+{
+  "recipe_id": 11,
+  "name": "Chocolate Cake",
+  "ingredients": ["Flour", "Sugar", "Cocoa Powder", "Eggs", "Butter"],
+  "cuisine": "American",
+  "prep_time": 50,
+  "difficulty": "medium",
+  "price": 750
+}
+
+
+10. Delete the recipe with recipe_id: 4 (Caesar Salad). ==>   Hotel> db.recipes.deleteOne({"recipe_id": 4, "name": "Caesar Salad"})
+
+11. Retrieve all recipes with cuisine "Japanese" or "Thai". ==>  Hotel> db.recipes.find({ cuisine: { $in: ["Japanese", "Thai"] } })
+
+12. Retrieve all recipes where the ingredients include "Egg".  ==>  Hotel> db.recipes.find({ ingredients: { $regex: /egg/i  } })    // i for case sensitivity   "Egg""egg""EGG"
+  
+13. Update the prep_time of the recipe with recipe_id: 7 (Pad Thai) to 35 minutes.  ==>  Hotel> db.recipes.updateOne({recipe_id: 7, name: "Pad Thai"}, {$set:{prep_time: 35}})
+
+14. Delete all recipes where the price is greater than 1000.  ==>  Hotel> db.recipes.deleteMany({price: {$gte: 1000}})
+
+15. Retrieve the first 3 recipes using the limit function. ==>   Hotel> db.recipes.find().limit(3)
+
+16. Skip the first 2 recipes and retrieve the rest. ==>  Hotel> db.recipes.find().skip(2)
+
+17. Retrieve all recipes with cuisine "Thai" and sort them by price in descending order. ==>   Hotel> db.recipes.find({"cuisine":"Thai"}).sort({price: -1})
+
+18. Insert another new recipe:  ==>  Hotel> db.recipes.insertOne({
+                                                                    "recipe_id": 12,
+                                                                    "name": "Hummus",
+                                                                    "ingredients": ["Chickpeas", "Tahini",
+                                                                    "Garlic", "Olive Oil", "Lemon Juice"],
+                                                                    "cuisine": "Middle Eastern", 
+                                                                    "prep_time": 15,  
+                                                                    "difficulty": "easy", 
+                                                                    "price": 300
+                                                                })   
+
+
+19. Count the number of recipes with difficulty "easy" ===>   Hotel> db.recipes.countDocuments({"difficulty" : "easy"})
+
+20. Retrieve all recipes with a prep_time greater than 40 minutes. ===>   Hotel> db.recipes.find({"prep_time" : {$gte : 40}})
+
