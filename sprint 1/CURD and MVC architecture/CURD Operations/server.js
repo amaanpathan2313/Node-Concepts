@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-app.use(express.json()); // sense json data and convert into parse
+app.use(express.json()); // sense json data and convert into parse  //  JSON body parser middleware  in is inbuilt middleware
 
 
 app.get('/test', (req, res) => {

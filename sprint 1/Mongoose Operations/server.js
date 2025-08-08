@@ -47,14 +47,37 @@ const UserModel = mongoose.model("User", userSchema)  //  (collectionName,  sche
 //                     1. .create()
 //                     2.  new and .save()
 
+//1. .create()
+
 //  UserModel.create is a function to create and add data Or schema in Collection
 // UserModel.create({ name: "Amaan Pathan", age: 23, location: "Panvel", isMarried: false }).then(() => console.log("Data add in DataBase"))
 
 
-const newUser = new UserModel({ name: "Sharukh Khan", age: 23, location: "South Mumbai", isMarried: true })
+// 2.  new and .save()
 
-newUser.save().then(() => {
-    console.log("Data add in DataBase")
-}).catch((error) => {
-    console.log(error)
+// const newUser = new UserModel({ name: "Sharukh Khan", age: 23, location: "South Mumbai", isMarried: true })
+
+// newUser.save().then(() => {
+//     console.log("Data add in DataBase")
+// }).catch((error) => {
+//     console.log(error)
+// })
+
+
+//  Get all data from document
+const userdata = UserModel.find();
+
+userdata.then((data) => {
+    console.log(data)
+}).catch((err) => {
+    console.log(err)
+})
+
+
+const updateInfo = UserModel.findByIdAndUpdate('68945abfd600951b663b89a7', {age : 59});
+
+updateInfo.then(() => {
+    console.log("Information updated !")
+}).catch((err) => {
+    console.log(err)
 })
