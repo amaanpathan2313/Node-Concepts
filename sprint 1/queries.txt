@@ -107,3 +107,27 @@ cls : to clear
 
 20. Retrieve all recipes with a prep_time greater than 40 minutes. ===>   Hotel> db.recipes.find({"prep_time" : {$gte : 40}})
 
+
+
+$eq ==> 	Equal to                 	==>    { age: { $eq: 18 } }
+$ne  ==>  Not equal to             	==>  { age: { $ne: 18 } }
+$gt	==>   Greater than	            ==>  { age: { $gt: 30 } }
+$gte ==> 	Greater than or equal to	==>     { age: { $gte: 18 } }
+$lt  ==> 	Less than	                ==>     { age: { $lt: 65 } }
+$lte ==> 	Less than or equal to	    ==>     { age: { $lte: 60 } }
+$in	 ==>  Value exists in array      ==>   	{ gender: { $in: ['male', 'female'] } }
+$and ==> 	Combine multiple query conditions       	==>    { $and: [{ age: { $gt: 18 } }, { isActive: true }] }
+$or ==>   Match if at least one condition is true   ==>   	{ $or: [{ age: { $lt: 18 } }, { isActive: false }] }
+
+
+
+.skip()	  ==>   Skips a certain number of results	 ==>    .find().skip(10)
+.limit()  ==>	  Limits the number of results       ==>    .find().limit(5)
+.sort()	  ==>   Sorts results by a field	         ==>     .find().sort({ age: -1 }) // in ascending   ||  1 for descending
+
+
+| Type              | Tightly Coupled | Has _id? | Reusable | Best Use Case                                          |
+|-------------------|-----------------|----------|----------|--------------------------------------------------------|
+| Nested Documents  | ✅ Yes          | ❌ No    | ❌ No    | Small, non-reusable, tightly coupled data             |
+|Sub documents      | ✅ Yes          | ✅ Yes   | ✅ Yes   | Structured, reusable, moderate-sized data             |
+| Referenced Docs   | ❌ No           | ✅ Yes   | ✅ Yes   | Large, shared, loosely-coupled independent data       |
