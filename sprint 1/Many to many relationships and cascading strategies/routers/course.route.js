@@ -23,7 +23,7 @@ courseRouter.post('/add-course', async (req, res) => {
     }
 })
 
-// Delete course
+ // SoftDelete course
 courseRouter.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
 

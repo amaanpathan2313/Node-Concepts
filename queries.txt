@@ -134,6 +134,8 @@ $or ==>   Match if at least one condition is true   ==>   	{ $or: [{ age: { $lt:
 
       ====================================        xxxxxxxxxxxxxxxxx       ======================================
 
+
+npm i validator
 const validator = require('validator');
 
  email: {
@@ -152,7 +154,7 @@ const validator = require('validator');
     },
 
 
-
+      ============================    xxxxxxxxxxxxxxxxxxxxxxxx       =========================================
 
       const targetData = await UserModel.find({
             $and: [
@@ -319,3 +321,14 @@ For the latest and most comprehensive list of operators, refer to the [MongoDB d
 
 
    let data = await BookModel.findById(bookId).populate('rentedBy', 'name email');
+
+
+         const patientList = await ConsultationModel.countDocuments({doctorId : id})
+
+
+///  ========================================================================================================================================
+
+
+# inculdes in mongoose : 
+
+https://chatgpt.com/share/689f1cd8-f6b8-800c-8a4c-f274a53f6bfd
