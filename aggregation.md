@@ -23,7 +23,7 @@ db.orders.aggregate([{$match : {status : "delivered"}}, {$group : {_id : "$name"
                     ----------------------------------   -------------------------  ---------------------------------
                                    stage 1                       stage 2                         stage 3
 
-
+  
 
 db.orders.aggregate([{$match: {status : "pending"}},
                      {$project : {current : "status", _id : 0}}])               // use Ctrl + enter to go on next line  
@@ -33,7 +33,7 @@ db.orders.aggregate([{$match: {status : "pending"}},
 db.orders.aggregate([
                        {$match: {status : "pending"}}, 
                        {$sort: { amount: -1 } },
-                       {$project : {current : "$status", _id : 0}}
+                       {$project : {current : "$status", _id : 0}}    
                     ])
  
 
@@ -104,7 +104,7 @@ db.orders.aggregate([
       OrderBy: "$user.name"     // Get the user's name from the joined collection
     }
   }
-])
+])  
 
 =========================================================
 
