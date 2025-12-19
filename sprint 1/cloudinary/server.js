@@ -12,12 +12,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors()); 
 
-// app.use(bodyParser.json());
 app.use(express.json());
 
-app.use(express.json({limit : '10mb'}));
+app.use(express.json({limit : '10mb'}));  //  limit of the file
 
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({extended : true}));   
 
 
 cloudinary.config({
@@ -27,7 +26,8 @@ cloudinary.config({
 });
 
 
-const upload = multer({dest : 'uploads/'});
+//  Multer is a Node.js middleware for Express that handles file uploads by parsing multipart/form-data and making uploaded files available in the request object.
+const upload = multer({dest : 'uploads/'}); 
 
 app.post('/upload', upload.single('file'), async(req, res) => {
 
